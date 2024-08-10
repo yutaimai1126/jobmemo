@@ -21,10 +21,11 @@
 
 本サービスでは、自己分析のための会社情報メモアプリを開発する。
 1. タクヤさんが興味を持った部分に赤線のアンダーライン、考えたことや疑問点は赤文字で記入してもらう
-![alt text](UI/writing_page.png)
 2. 記入された手書き文字をデジタル化して表示
-![alt text](UI/transrate.png)
 3. タクヤさんが興味を持ったことを軸に会社を比較検討
+
+![alt text](UI/writing_page.png)
+![alt text](UI/transrate.png)
 ![alt text](UI/my_page.png)
 
 ## エンドユーザーにとってこのサービスを使うハードルは？
@@ -32,3 +33,6 @@
 
 ## そのハードルをどうやって乗り越える？
 チェックボックス選択式で会社情報を整理する
+
+![alt text](UI/checkbox1_page.png)
+![alt text](UI/checkbox2_page.png)

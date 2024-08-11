@@ -4,6 +4,34 @@ import pandas as pd
 
 st.set_page_config(page_title="Job Memo", page_icon='icon.png')
 
+def check_db_schema():
+    db_path = 'interest.db'
+    
+    if not os.path.exists(db_path):
+        st.write(f"{db_path} は存在しません。")
+        return
+    
+    with sqlite3.connect(db_path) as conn:
+        cur = conn.cursor()
+        cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        tables = cur.fetchall()
+        
+        if tables:
+            st.write("データベース内のテーブル:")
+            for table in tables:
+                st.write(f"- {table[0]}")
+                
+                cur.execute(f"PRAGMA table_info({table[0]});")
+                columns = cur.fetchall()
+                st.write("カラム情報:")
+                for column in columns:
+                    st.write(f"  - {column[1]}: {column[2]}")
+        else:
+            st.write("データベースにはテーブルがありません。")
+
+st.title("データベース状態確認")
+check_db_schema()
+
 @st.cache_data
 def init_db():
     with sqlite3.connect('interest.db') as conn:
@@ -36,7 +64,7 @@ st.header(f'{name}さん、会社説明会お疲れさまでした')
 company_name = st.text_input('説明会を受けた会社名は何ですか？', '', key='company_name_input')
 
 # データベースに接続
-with sqlite3.connect('./interest.db') as conn:
+with sqlite3.connect('interest.db') as conn:
     cur = conn.cursor()
     interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
 

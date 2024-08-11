@@ -95,6 +95,8 @@ if submit_button:
         
         df.loc[company_name, 'コメント'] = comment
         
+        st.write(df)
+
         # データベースに保存
         try:
             df.to_sql('Interest', conn, if_exists='replace', index=True)

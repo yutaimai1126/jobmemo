@@ -15,8 +15,8 @@ def init_db():
             給与 INTEGER,
             福利厚生 INTEGER,
             やりがい INTEGER,
-            企業理念 INTEGER
-            コメント INTEGER
+            企業理念 INTEGER,
+            コメント TEXT
         )
         ''')
         conn.commit()
@@ -41,7 +41,7 @@ with sqlite3.connect('interest.db') as conn:
     interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
 
     if first_time == 'はい':
-        df = pd.DataFrame(0, index=[company_name], columns=interest_list)
+        df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
         df.index.name = 'company_name'
     else:
         df = pd.read_sql('SELECT * FROM sample', conn)
@@ -58,17 +58,14 @@ with sqlite3.connect('interest.db') as conn:
     
     comment = st.text_area('コメントを入力してください', value='', height=100)
 
-    df.loc[company_name,'コメント'] = comment
+    df.loc[company_name, 'コメント'] = comment
 
     st.write(df)
 
     if st.button('保存'):
         try:
             # データベースに保存する前にデータの存在を確認
-            if company_name in df.index:
-                df.to_sql('sample', conn, if_exists='replace', index=True)  # 既存のデータを更新
-            else:
-                df.to_sql('sample', conn, if_exists='append', index=True)  # 新しいデータを追加
+            df.to_sql('sample', conn, if_exists='replace', index=True)  # 既存のデータを更新
             conn.commit()
             st.success("データが保存されました。")
         except Exception as e:

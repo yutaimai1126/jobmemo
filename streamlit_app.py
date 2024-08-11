@@ -18,6 +18,16 @@ company_name = st.text_input('説明会を受けた会社名は何ですか？',
 # データベースに接続
 conn = sqlite3.connect('interest.db')
 cur = conn.cursor()
+cur.execute('''
+CREATE TABLE IF NOT EXISTS sample (
+    index TEXT PRIMARY KEY,
+    働き方 BOOLEAN,
+    給与 BOOLEAN,
+    福利厚生 BOOLEAN,
+    やりがい BOOLEAN,
+    企業理念 BOOLEAN
+)
+''')
 
 interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
 

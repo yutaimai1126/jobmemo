@@ -4,11 +4,10 @@ import pandas as pd
 
 st.set_page_config(page_title="Job Memo", page_icon='icon.png')
 
-@st.cache_data  # キャッシュをクリアする
+@st.cache_data  # キャッシュをクリア
 def init_db():
     conn = sqlite3.connect('interest.db')
     cur = conn.cursor()
-    cur.execute("PRAGMA table_info(sample)")
     cur.execute('''
     CREATE TABLE IF NOT EXISTS sample (
         company_name TEXT PRIMARY KEY,
@@ -21,8 +20,6 @@ def init_db():
     ''')
     conn.commit()
     conn.close()
-
-init_db()
 
 name = 'タクヤ'
 st.title(f"{name}さんのマイページ")
@@ -38,6 +35,7 @@ company_name = st.text_input('説明会を受けた会社名は何ですか？',
 # データベースに接続
 conn = sqlite3.connect('interest.db')
 cur = conn.cursor()
+init_db()
 
 interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
 

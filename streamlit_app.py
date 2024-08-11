@@ -35,7 +35,7 @@ def init_db():
     with sqlite3.connect('interest.db') as conn:
         cur = conn.cursor()
         cur.execute('''
-        CREATE TABLE IF NOT EXISTS sample (
+        CREATE TABLE Interest (
             company_name TEXT PRIMARY KEY,
             働き方 INTEGER,
             給与 INTEGER,
@@ -70,7 +70,7 @@ with sqlite3.connect('interest.db') as conn:
         df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
         df.index.name = 'company_name'
     else:
-        df = pd.read_sql('SELECT * FROM sample', conn)
+        df = pd.read_sql('SELECT * FROM Interest', conn)
         df.set_index('company_name', inplace=True)
 
     selected_interest = st.radio(
@@ -94,7 +94,7 @@ with sqlite3.connect('interest.db') as conn:
     if st.button('保存'):
         try:
             with sqlite3.connect('interest.db') as conn:
-                df.to_sql('sample', conn, if_exists='replace', index=True)
+                df.to_sql('Interest', conn, if_exists='replace', index=True)
                 conn.commit()
                 st.success("データが保存されました。")
         except Exception as e:

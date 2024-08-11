@@ -6,10 +6,10 @@ st.title("タクヤさんのマイページ")
 
 st.header('会社説明会')
 
-st.subheader('株式会社マネッセ')
+text_input = st.text_input('会社名', 'テキスト入力')
 
 st.text('タクヤさんは何に興味を持ちましたか？')
 
-interests = ['国内シェア','海外進出度','将来性']
-for interest in interests:
+interest_list = ['国内シェア','海外進出度','将来性']
+for interest in interest_list:
     st.checkbox(interest)

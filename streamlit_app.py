@@ -103,6 +103,4 @@ if submit_button:
             st.error(f"エラーが発生しました: {e}")
 
     st.write(df)
-    # # データベースの状態確認
-    # st.title("データベース状態確認")
-    # check_db_schema()
+

@@ -21,7 +21,7 @@ cur = conn.cursor()
 if first_time == 'はい':
     # データフレーム読み込み
     interest_list = ['働き方','給与','福利厚生','やりがい','企業理念']
-    df = pd.DataFrame(index=company_name, columns=interest_list)
+    df = pd.DataFrame(0,index=company_name, columns=interest_list)
 else:
     df = pd.read_sql('SELECT * FROM sample', conn)
 

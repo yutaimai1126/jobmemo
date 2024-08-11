@@ -38,6 +38,7 @@ st.write(df)
 # 保存ボタンを追加
 if st.button('保存'):
     df.to_sql('sample', conn, if_exists='append', index=True)
+    conn.commit()  # 変更をコミット
     st.success("データが保存されました。")
 
 # データベースをクローズする

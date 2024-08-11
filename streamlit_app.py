@@ -8,30 +8,29 @@ st.set_page_config(page_title="Job Memo", page_icon='icon.png')
 name = 'タクヤ'
 st.title(f"{name}さんのマイページ")
 
-# フォームの初期化
-with st.form(key='input_form'):
-    first_time = st.radio(
-        'JobMemoの利用は初めてですか？',
-        ['はい', 'いいえ'],
-        key='first_time_radio'
-    )
 
-    st.header(f'会社説明会お疲れさまでした')
-    company_name = st.text_input('説明会を受けた会社名は何ですか？', '', key='company_name_input')
+first_time = st.radio(
+    'JobMemoの利用は初めてですか？',
+    ['はい', 'いいえ'],
+    key='first_time_radio'
+)
 
-    interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
-    selected_interest = st.radio(
-        f'{name}さんが最も興味を持ったことは何ですか？',
-        interest_list,
-        key='interest_radio'
-    )
+st.header(f'会社説明会お疲れさまでした')
+company_name = st.text_input('説明会を受けた会社名は何ですか？', '', key='company_name_input')
 
-    p_comment = st.text_area(f'{company_name}の良い点を入力してください', value='', height=100, key='p_comment_area')
-    n_comment = st.text_area(f'{company_name}の悪い点を入力してください', value='', height=100, key='n_comment_area')
+interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
+selected_interest = st.radio(
+    f'{name}さんが最も興味を持ったことは何ですか？',
+    interest_list,
+    key='interest_radio'
+)
 
-    aspiration = st.slider('志望度', 0, 100, 50)
+p_comment = st.text_area(f'{company_name}の良い点を入力してください', value='', height=100, key='p_comment_area')
+n_comment = st.text_area(f'{company_name}の悪い点を入力してください', value='', height=100, key='n_comment_area')
 
-    submit_button = st.form_submit_button(label='保存')
+aspiration = st.slider('志望度', 0, 100, 50)
+
+submit_button = st.form_submit_button(label='保存')
 
 if submit_button:
     dbname = 'interest.db'
@@ -65,14 +64,14 @@ if submit_button:
             # 新しい会社名が存在しない場合、データフレームに追加
             if company_name not in df.index:
                 df.loc[company_name] = [0] * len(interest_list) + [''] * 3
-    
+
     # データの更新
     if company_name:
         df.loc[company_name, selected_interest] = 1
         df.loc[company_name, '良い点'] = p_comment
         df.loc[company_name, '悪い点'] = n_comment
         df.loc[company_name, '志望度'] = aspiration
-    
+
     st.write(df)
 
     # データベースに保存
@@ -84,12 +83,8 @@ if submit_button:
         df['悪い点'].to_csv('n_comment.txt', index=False, header=False, sep='\t', quoting=csv.QUOTE_MINIMAL)
         
         st.success("データが保存されました。")
-
-        # フォームのリセット
-        st.experimental_rerun()
-
     except Exception as e:
         st.error(f"エラーが発生しました: {e}")
-    
+
     cur.close()
     conn.close()

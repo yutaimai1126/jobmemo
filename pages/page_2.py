@@ -46,7 +46,7 @@ plt.xlabel('Company Name')
 plt.ylabel('Aspiration Level')
 
 # グラフを表示
-st.pyplot(fig)
+st.pyplot(plt)
 
 # 接続を閉じる
 conn.close()

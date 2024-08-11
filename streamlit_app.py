@@ -58,6 +58,8 @@ if st.button('保存'):
     df.to_sql('sample', conn, if_exists='append', index=True)
     conn.commit()
     st.success("データが保存されました。")
+    saved_data = pd.read_sql('SELECT * FROM sample', conn, index_col='company_name')
+    st.write(saved_data)
 
 cur.close()
 conn.close()

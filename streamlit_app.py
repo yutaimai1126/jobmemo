@@ -30,7 +30,7 @@ def check_db_schema():
         else:
             st.write("データベースにはテーブルがありません。")
 
-@st.cache_data
+# @st.cache_data
 def init_db():
     with sqlite3.connect('interest.db') as conn:
         cur = conn.cursor()
@@ -49,6 +49,8 @@ def init_db():
 
 name = 'タクヤ'
 st.title(f"{name}さんのマイページ")
+dbname = 'interest.db'
+conn = sqlite3.connect(dbname)
 
 init_db()
 

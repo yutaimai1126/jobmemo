@@ -32,8 +32,13 @@ for interest in interest_list:
     selected_interest = st.radio(interest, ['1', '2', '3', '4', '5'], index=2)
     df.loc[company_name, interest] = selected_interest
 
-# データを保存
-df.to_sql('sample', conn, if_exists='append', index=True)
+# データフレームの表示
+st.write(df)
+
+# 保存ボタンを追加
+if st.button('保存'):
+    df.to_sql('sample', conn, if_exists='append', index=True)
+    st.success("データが保存されました。")
 
 # データベースをクローズする
 cur.close()

@@ -1,6 +1,7 @@
 import streamlit as st
 import sqlite3
 import pandas as pd
+import csv
 
 st.set_page_config(page_title="Job Memo", page_icon='icon.png')
 
@@ -79,8 +80,8 @@ if submit_button:
     try:
         df.to_sql('Interest', conn, if_exists='replace', index=True)
         # テキスト形式で出力
-        df['良い点'].to_csv('p_comment.txt', index=False,header=False, sep='\t', quoting=3)
-        df['悪い点'].to_csv('n_comment.txt', index=False,header=False, sep='\t', quoting=3)
+        df['良い点'].to_csv('p_comment.txt', index=False,header=False, sep='\t', quoting=csv.QUOTE_MINIMA)
+        df['悪い点'].to_csv('n_comment.txt', index=False,header=False, sep='\t', quoting=csv.QUOTE_MINIMA)
 
         st.success("データが保存されました。")
     except Exception as e:

@@ -107,5 +107,5 @@ if submit_button:
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
 
-# データベースをクローズする
-conn.close()
+        # データベースをクローズする
+        conn.close()

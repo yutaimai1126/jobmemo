@@ -23,7 +23,7 @@ sum_interests = df[interest_list].sum()
 fig, ax = plt.subplots(figsize=(10, 6))
 
 # 各項目の合計を棒グラフで表示
-sum_interests.plot(kind='bar', color='skyblue', ax=ax)
+sum_interests.plot(kind='bar', color='black', ax=ax)
 
 # グラフのタイトルとラベルを設定
 ax.set_title('各項目の合計')

@@ -67,7 +67,7 @@ with sqlite3.connect('interest.db') as conn:
     interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
 
     if first_time == 'はい':
-        df = pd.DataFrame(None, index=[company_name], columns=interest_list + ['コメント'])
+        df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
         df.index.name = 'company_name'
     else:
         df = pd.read_sql('SELECT * FROM Interest', conn)

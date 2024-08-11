@@ -14,7 +14,8 @@ conn = sqlite3.connect(dbname)
 query = 'SELECT * FROM Interest'
 df = pd.read_sql(query, conn)
 
-print(df)
+st.write(df)
+
 # 各項目について合計を計算する
 interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
 sum_interests = df[interest_list].sum()

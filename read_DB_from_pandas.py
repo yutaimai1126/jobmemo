@@ -1,5 +1,6 @@
 import sqlite3
 
+@st.cache_data
 conn = sqlite3.connect('interest.db')
 cur = conn.cursor()
 

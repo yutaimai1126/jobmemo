@@ -35,7 +35,7 @@ def init_db():
     with sqlite3.connect('interest.db') as conn:
         cur = conn.cursor()
         cur.execute('''
-        CREATE TABLE Interest (
+        CREATE TABLE IF NOT EXISTS Interest (
             company_name TEXT PRIMARY KEY,
             働き方 INTEGER,
             給与 INTEGER,
@@ -95,7 +95,6 @@ with sqlite3.connect('interest.db') as conn:
         try:
             with sqlite3.connect('interest.db') as conn:
                 df.to_sql('Interest', conn, if_exists='replace', index=True)
-                conn.commit()
                 st.success("データが保存されました。")
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")

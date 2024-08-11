@@ -4,7 +4,7 @@ import pandas as pd
 from wordcloud import WordCloud
 from matplotlib import pyplot as plt
 
-st.write(comment.txt)
+st.write("comment.txt")
 with open("comment.txt", "r", encoding="utf-8")as f:
     text=f.read()
 

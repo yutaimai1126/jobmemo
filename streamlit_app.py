@@ -10,4 +10,6 @@ st.subheader('株式会社マネッセ')
 
 st.text('タクヤさんは何に興味を持ちましたか？')
 
-st.checkbox('国内シェア')
+interests = ['国内シェア','海外進出度','将来性']
+for interest in interests:
+    st.checkbox(interest)

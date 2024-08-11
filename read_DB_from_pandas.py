@@ -23,11 +23,11 @@ cur = conn.cursor()
 cur.execute('''
 CREATE TABLE IF NOT EXISTS sample (
     index TEXT PRIMARY KEY,
-    働き方 BOOLEAN,
-    給与 BOOLEAN,
-    福利厚生 BOOLEAN,
-    やりがい BOOLEAN,
-    企業理念 BOOLEAN
+    働き方 INTEGER,
+    給与 INTEGER,
+    福利厚生 INTEGER,
+    やりがい INTEGER,
+    企業理念 INTEGER
 )
 ''')
 

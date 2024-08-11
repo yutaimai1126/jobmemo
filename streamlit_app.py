@@ -1,51 +1,8 @@
 import streamlit as st
 import sqlite3
 import pandas as pd
-import os
 
 st.set_page_config(page_title="Job Memo", page_icon='icon.png')
-
-def check_db_schema():
-    db_path = 'interest.db'
-    
-    if not os.path.exists(db_path):
-        st.write(f"{db_path} は存在しません。")
-        return
-    
-    with sqlite3.connect(db_path) as conn:
-        cur = conn.cursor()
-        cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
-        tables = cur.fetchall()
-        
-        if tables:
-            st.write("データベース内のテーブル:")
-            for table in tables:
-                st.write(f"- {table[0]}")
-                
-                cur.execute(f"PRAGMA table_info({table[0]});")
-                columns = cur.fetchall()
-                st.write("カラム情報:")
-                for column in columns:
-                    st.write(f"  - {column[1]}: {column[2]}")
-        else:
-            st.write("データベースにはテーブルがありません。")
-
-# @st.cache_data
-def init_db():
-    with sqlite3.connect('interest.db') as conn:
-        cur = conn.cursor()
-        cur.execute('''
-        CREATE TABLE IF NOT EXISTS Interest (
-            company_name TEXT PRIMARY KEY,
-            働き方 INTEGER,
-            給与 INTEGER,
-            福利厚生 INTEGER,
-            やりがい INTEGER,
-            企業理念 INTEGER,
-            コメント TEXT
-        )
-        ''')
-        conn.commit()
 
 name = 'タクヤ'
 st.title(f"{name}さんのマイページ")
@@ -75,7 +32,19 @@ if submit_button:
     dbname = 'interest.db'
     conn = sqlite3.connect(dbname)
     cur = conn.cursor()
-    init_db()
+    cur.execute('''
+    CREATE TABLE IF NOT EXISTS Interest (
+        company_name TEXT PRIMARY KEY,
+        働き方 INTEGER,
+        給与 INTEGER,
+        福利厚生 INTEGER,
+        やりがい INTEGER,
+        企業理念 INTEGER,
+        コメント TEXT
+    )
+    ''')
+    conn.commit()
+
     if first_time == 'はい':
         df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
         df.index.name = 'company_name'
@@ -104,5 +73,6 @@ if submit_button:
         st.success("データが保存されました。")
     except Exception as e:
         st.error(f"エラーが発生しました: {e}")
-    # データベースをクローズする
+    
+    cur.close()
     conn.close()

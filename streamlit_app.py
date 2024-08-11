@@ -24,8 +24,8 @@ with st.form(key='input_form'):
         key='interest_radio'
     )
 
-    p_comment = st.text_area(f'{company_name}の良い点を入力してください', value='', height=100, key='comment_area')
-    n_comment = st.text_area(f'{company_name}の悪い点を入力してください', value='', height=100, key='comment_area')
+    p_comment = st.text_area(f'{company_name}の良い点を入力してください', value='', height=100, key='p_comment')
+    n_comment = st.text_area(f'{company_name}の悪い点を入力してください', value='', height=100, key='n_comment')
 
     aspiration = st.slider('志望度', 0, 100, 50)
 
@@ -81,7 +81,7 @@ if submit_button:
         # テキスト形式で出力
         df['良い点'].to_csv('p_comment.txt', index=False,header=False, sep='\t', quoting=3)
         df['悪い点'].to_csv('n_comment.txt', index=False,header=False, sep='\t', quoting=3)
-        
+
         st.success("データが保存されました。")
     except Exception as e:
         st.error(f"エラーが発生しました: {e}")

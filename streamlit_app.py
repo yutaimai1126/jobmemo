@@ -72,34 +72,30 @@ with sqlite3.connect('interest.db') as conn:
     else:
         df = pd.read_sql('SELECT * FROM Interest', conn)
         if df.empty:
-            # データがない場合は0で初期化
             df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
             df.index.name = 'company_name'
         else:
             df.set_index('company_name', inplace=True)
-
+        
     selected_interest = st.radio(
         f'{name}さんが最も興味を持ったことは何ですか？',
         interest_list,
         key='interest_radio'
     )
 
-    if st.button('決定'):
-        if company_name:
-            df.loc[company_name, selected_interest] = 1
+    if company_name:
+        df.loc[company_name, selected_interest] = 1
     
-    comment = st.text_area('コメントを入力してください', value='', height=100)
-
-    if st.button('決定'):
-        df.loc[company_name, 'コメント'] = comment
+    comment = st.text_area('コメントを入力してください', value='', height=100, key='comment_area')
+    df.loc[company_name, 'コメント'] = comment
 
     st.write(df)
 
-    # # データベースの状態確認
+    # データベースの状態確認
     # st.title("データベース状態確認")
     # check_db_schema()
 
-    if st.button('保存'):
+    if st.button('保存', key='save_button'):
         try:
             with sqlite3.connect('interest.db') as conn:
                 df.to_sql('Interest', conn, if_exists='replace', index=True)

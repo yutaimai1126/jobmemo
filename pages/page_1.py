@@ -4,10 +4,10 @@ import pandas as pd
 from wordcloud import WordCloud
 from matplotlib import pyplot as plt
 
-st.write("comment.txt")
+
 with open("comment.txt", "r", encoding="utf-8")as f:
     text=f.read()
-
+st.write(text)
 if not text.strip():
     st.error("テキストが空です。")
 else:

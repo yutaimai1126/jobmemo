@@ -8,6 +8,7 @@ st.set_page_config(page_title="Job Memo", page_icon='icon.png')
 name = 'タクヤ'
 st.title(f"{name}さんのマイページ")
 
+# フォームの初期化
 with st.form(key='input_form'):
     first_time = st.radio(
         'JobMemoの利用は初めてですか？',
@@ -83,6 +84,10 @@ if submit_button:
         df['悪い点'].to_csv('n_comment.txt', index=False, header=False, sep='\t', quoting=csv.QUOTE_MINIMAL)
         
         st.success("データが保存されました。")
+
+        # フォームのリセット
+        st.experimental_rerun()
+
     except Exception as e:
         st.error(f"エラーが発生しました: {e}")
     

@@ -1,6 +1,7 @@
 import streamlit as st
 import sqlite3
 import pandas as pd
+import csv  # 追加します
 
 st.set_page_config(page_title="Job Memo", page_icon='icon.png')
 
@@ -24,8 +25,8 @@ with st.form(key='input_form'):
         key='interest_radio'
     )
 
-    p_comment = st.text_area(f'{company_name}の良い点を入力してください', value='', height=100, key='p_comment')
-    n_comment = st.text_area(f'{company_name}の悪い点を入力してください', value='', height=100, key='n_comment')
+    p_comment = st.text_area(f'{company_name}の良い点を入力してください', value='', height=100, key='p_comment_area')
+    n_comment = st.text_area(f'{company_name}の悪い点を入力してください', value='', height=100, key='n_comment_area')
 
     aspiration = st.slider('志望度', 0, 100, 50)
 
@@ -62,27 +63,25 @@ if submit_button:
             df.set_index('company_name', inplace=True)
             # 新しい会社名が存在しない場合、データフレームに追加
             if company_name not in df.index:
-                df.loc[company_name] = [0] * len(interest_list) + ['']
+                df.loc[company_name] = [0] * len(interest_list) + [''] * 3
     
     # データの更新
     if company_name:
         df.loc[company_name, selected_interest] = 1
-    
-    df.loc[company_name, '良い点'] = p_comment
-    df.loc[company_name, '悪い点'] = n_comment
-
-    df.loc[company_name, '志望度'] = aspiration
+        df.loc[company_name, '良い点'] = p_comment
+        df.loc[company_name, '悪い点'] = n_comment
+        df.loc[company_name, '志望度'] = aspiration
     
     st.write(df)
 
     # データベースに保存
     try:
         df.to_sql('Interest', conn, if_exists='replace', index=True)
-        # テキスト形式で出力
-        df['良い点'].to_csv('p_comment.txt', index=False,header=False, sep='\t', quoting=3)
-        df['悪い点'].to_csv('n_comment.txt', index=False,header=False, sep='\t', quoting=3)
         
-
+        # テキスト形式で出力
+        df['良い点'].to_csv('p_comment.txt', index=False, header=False, sep='\t', quoting=csv.QUOTE_MINIMAL)
+        df['悪い点'].to_csv('n_comment.txt', index=False, header=False, sep='\t', quoting=csv.QUOTE_MINIMAL)
+        
         st.success("データが保存されました。")
     except Exception as e:
         st.error(f"エラーが発生しました: {e}")

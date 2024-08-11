@@ -50,8 +50,6 @@ def init_db():
 name = 'タクヤ'
 st.title(f"{name}さんのマイページ")
 
-init_db()
-
 with st.form(key='input_form'):
     first_time = st.radio(
         'JobMemoの利用は初めてですか？',
@@ -74,38 +72,38 @@ with st.form(key='input_form'):
     submit_button = st.form_submit_button(label='保存')
 
 if submit_button:
-    with sqlite3.connect('interest.db') as conn:
-        cur = conn.cursor()
-        
-        # データフレームの初期化
-        if first_time == 'はい':
+    dbname = 'interest.db'
+    conn = sqlite3.connect(dbname)
+    cur = conn.cursor()
+    init_db()
+    if first_time == 'はい':
+        df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
+        df.index.name = 'company_name'
+    else:
+        df = pd.read_sql('SELECT * FROM Interest', conn)
+        if df.empty:
             df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
             df.index.name = 'company_name'
         else:
-            df = pd.read_sql('SELECT * FROM Interest', conn)
-            if df.empty:
-                df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
-                df.index.name = 'company_name'
-            else:
-                df.set_index('company_name', inplace=True)
-                # 新しい会社名が存在しない場合、データフレームに追加
-                if company_name not in df.index:
-                    df.loc[company_name] = [0] * len(interest_list) + ['']
-        
-        # データの更新
-        if company_name:
-            df.loc[company_name, selected_interest] = 1
-        
-        df.loc[company_name, 'コメント'] = comment
-        
-        st.write(df)
+            df.set_index('company_name', inplace=True)
+            # 新しい会社名が存在しない場合、データフレームに追加
+            if company_name not in df.index:
+                df.loc[company_name] = [0] * len(interest_list) + ['']
+    
+    # データの更新
+    if company_name:
+        df.loc[company_name, selected_interest] = 1
+    
+    df.loc[company_name, 'コメント'] = comment
+    
+    st.write(df)
 
-        # データベースに保存
-        try:
-            df.to_sql('Interest', conn, if_exists='replace', index=True)
-            st.success("データが保存されました。")
-        except Exception as e:
-            st.error(f"エラーが発生しました: {e}")
-        check_db_schema()
-        # データベースをクローズする
-        conn.close()
+    # データベースに保存
+    try:
+        df.to_sql('Interest', conn, if_exists='replace', index=True)
+        st.success("データが保存されました。")
+    except Exception as e:
+        st.error(f"エラーが発生しました: {e}")
+    check_db_schema()
+    # データベースをクローズする
+    conn.close()

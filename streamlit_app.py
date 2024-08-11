@@ -102,6 +102,7 @@ if submit_button:
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
 
-    # データベースの状態確認
-    st.title("データベース状態確認")
-    check_db_schema()
+    st.write(df)
+    # # データベースの状態確認
+    # st.title("データベース状態確認")
+    # check_db_schema()

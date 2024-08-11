@@ -38,7 +38,7 @@ company_name = st.text_input('説明会を受けた会社名は何ですか？',
 # データベースに接続
 with sqlite3.connect('interest.db') as conn:
     cur = conn.cursor()
-    interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念', 'コメント']
+    interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
 
     if first_time == 'はい':
         df = pd.DataFrame(0, index=[company_name], columns=interest_list)

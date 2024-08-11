@@ -56,7 +56,8 @@ with sqlite3.connect('interest.db') as conn:
     if company_name:
         df.loc[company_name, selected_interest] = 1  # Boolean代わりに1を使用
     
-    comment = st.text_area()
+    comment = st.text_area('コメントを入力してください', value='', height=100)
+
     df.loc[company_name,'コメント'] = comment
 
     st.write(df)

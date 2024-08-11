@@ -7,7 +7,7 @@ from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
 
 # テキストファイルを読み込み、不要な文字や記号を削除
-with open('comment.txt', encoding='utf-8') as f:
+with open('p_comment.txt', encoding='utf-8') as f:
     text = f.read().replace('\n', '').replace(' ', '')
 
 text = re.sub('\u3000', '', text)

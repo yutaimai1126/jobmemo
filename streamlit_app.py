@@ -24,7 +24,10 @@ with st.form(key='input_form'):
         key='interest_radio'
     )
 
-    comment = st.text_area('コメントを入力してください', value='', height=100, key='comment_area')
+    p_comment = st.text_area(f'{company_name}の良い点を入力してください', value='', height=100, key='comment_area')
+    n_comment = st.text_area(f'{company_name}の悪い点を入力してください', value='', height=100, key='comment_area')
+
+    aspiration = st.slider('志望度', 0, 100, 50)
 
     submit_button = st.form_submit_button(label='保存')
 
@@ -40,7 +43,9 @@ if submit_button:
         福利厚生 INTEGER,
         やりがい INTEGER,
         企業理念 INTEGER,
-        コメント TEXT
+        良い点 TEXT,
+        悪い点 TEXT,
+        志望度 INTEGER
     )
     ''')
     conn.commit()
@@ -63,7 +68,10 @@ if submit_button:
     if company_name:
         df.loc[company_name, selected_interest] = 1
     
-    df.loc[company_name, 'コメント'] = comment
+    df.loc[company_name, '良い点'] = p_comment
+    df.loc[company_name, '悪い点'] = n_comment
+
+    df.loc[company_name, '志望度'] = aspiration
     
     st.write(df)
 
@@ -71,7 +79,9 @@ if submit_button:
     try:
         df.to_sql('Interest', conn, if_exists='replace', index=True)
         # テキスト形式で出力
-        df['コメント'].to_csv('comment.txt', index=False,header=False, sep='\t', quoting=3)
+        df['良い点'].to_csv('p_comment.txt', index=False,header=False, sep='\t', quoting=3)
+        df['悪い点'].to_csv('n_comment.txt', index=False,header=False, sep='\t', quoting=3)
+        
         st.success("データが保存されました。")
     except Exception as e:
         st.error(f"エラーが発生しました: {e}")

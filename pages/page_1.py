@@ -7,11 +7,8 @@ import unicodedata
 from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
 
-# フォントのパス
-font_path = 'C:/WINDOWS/Fonts/BIZ-UDMinchoM.ttc'
-
 # フォントを追加
-prop = fm.FontProperties(fname=font_path)
+prop = fm.FontProperties(fname='C:/WINDOWS/Fonts/BIZ-UDMinchoM.ttc')
 plt.rcParams['font.family'] = prop.get_name()
 
 # 良い点

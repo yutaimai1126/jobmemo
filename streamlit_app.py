@@ -6,8 +6,9 @@ st.title("タクヤさんのマイページ")
 
 st.header('会社説明会')
 
-text_input = st.text_input('会社名', 'テキスト入力')
+company_name = st.text_input('会社名', '')
 
+st.subheader(f'{company_name}')
 st.text('タクヤさんは何に興味を持ちましたか？')
 
 interest_list = ['国内シェア','海外進出度','将来性']

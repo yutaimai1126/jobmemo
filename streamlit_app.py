@@ -80,13 +80,13 @@ if submit_button:
     conn.close()
 
     from wordcloud import WordCloud
-from matplotlib import pyplot as plt
+    from matplotlib import pyplot as plt
 
-with open("comment.txt", "r", encoding="utf-8")as f:
-     text=f.read()
+    with open("comment.txt", "r", encoding="utf-8")as f:
+        text=f.read()
 
-# ワードクラウドの作成
-wordcloud =WordCloud( 
-    background_color="white").generate(text)
+    # ワードクラウドの作成
+    wordcloud =WordCloud( 
+        background_color="white").generate(text)
 
-plt.imshow(wordcloud)
+    plt.imshow(wordcloud)

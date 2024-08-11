@@ -51,12 +51,12 @@ if submit_button:
     conn.commit()
 
     if first_time == 'はい':
-        df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
+        df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['良い点', '悪い点', '志望度'])
         df.index.name = 'company_name'
     else:
         df = pd.read_sql('SELECT * FROM Interest', conn)
         if df.empty:
-            df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
+            df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['良い点', '悪い点', '志望度'])
             df.index.name = 'company_name'
         else:
             df.set_index('company_name', inplace=True)

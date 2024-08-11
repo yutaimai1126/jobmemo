@@ -36,7 +36,7 @@ st.header(f'{name}さん、会社説明会お疲れさまでした')
 company_name = st.text_input('説明会を受けた会社名は何ですか？', '', key='company_name_input')
 
 # データベースに接続
-with sqlite3.connect('interest.db') as conn:
+with sqlite3.connect('./interest.db') as conn:
     cur = conn.cursor()
     interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
 
@@ -54,7 +54,7 @@ with sqlite3.connect('interest.db') as conn:
     )
 
     if company_name:
-        df.loc[company_name, selected_interest] = 1  # Boolean代わりに1を使用
+        df.loc[company_name, selected_interest] = 1
     
     comment = st.text_area('コメントを入力してください', value='', height=100)
     df.loc[company_name, 'コメント'] = comment
@@ -64,7 +64,7 @@ with sqlite3.connect('interest.db') as conn:
     if st.button('保存'):
         try:
             with sqlite3.connect('interest.db') as conn:
-                df.to_sql('sample', conn, if_exists='replace', index=True)  # 既存のデータを更新
+                df.to_sql('sample', conn, if_exists='replace', index=True)
                 conn.commit()
                 st.success("データが保存されました。")
         except Exception as e:

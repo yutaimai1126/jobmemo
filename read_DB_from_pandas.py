@@ -8,6 +8,7 @@ st.set_page_config(page_title="Job Memo", page_icon='icon.png')
 def init_db():
     conn = sqlite3.connect('interest.db')
     cur = conn.cursor()
+    cur.execute("PRAGMA table_info(sample)")
     cur.execute('''
     CREATE TABLE IF NOT EXISTS sample (
         company_name TEXT PRIMARY KEY,

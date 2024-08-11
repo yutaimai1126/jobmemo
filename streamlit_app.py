@@ -8,16 +8,14 @@ name = 'タクヤ'
 st.title(f"{name}さんのマイページ")
 
 first_time = st.radio(
-    f'はじめまして{name}さん、JobMemoの利用は初めてですか？',
+    f'JobMemoの利用は初めてですか？',
     ['はい','いいえ']
     )
 
 if first_time == 'はい':
-    st.header(f'はじめまして{name}さん。会社説明会お疲れさまでした')
+    st.header(f'{name}さん、会社説明会お疲れさまでした')
 
     company_name = st.text_input('会社名', '')
-
-    # st.text()
 
     ziku = st.radio(
         f'{name}さんは就活の軸が決まっていますか？',
@@ -46,10 +44,6 @@ def show_data():
     data = c.fetchall()
     for d in data:
         st.write(d)
-
-interest_list = ['国内シェア','海外進出度','将来性']
-for interest in interest_list:
-    st.checkbox(interest)
 
 # データを追加する
 def add_data(name, age):

@@ -25,3 +25,5 @@ else:
     
     # Streamlitでの表示
     st.pyplot(plt)
+    plt.imshow(wordcloud)
+

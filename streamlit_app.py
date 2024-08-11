@@ -30,9 +30,6 @@ def check_db_schema():
         else:
             st.write("データベースにはテーブルがありません。")
 
-st.title("データベース状態確認")
-check_db_schema()
-
 @st.cache_data
 def init_db():
     with sqlite3.connect('interest.db') as conn:
@@ -89,6 +86,10 @@ with sqlite3.connect('interest.db') as conn:
     df.loc[company_name, 'コメント'] = comment
 
     st.write(df)
+
+
+    st.title("データベース状態確認")
+    check_db_schema()
 
     if st.button('保存'):
         try:

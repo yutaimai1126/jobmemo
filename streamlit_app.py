@@ -71,8 +71,12 @@ with sqlite3.connect('interest.db') as conn:
         df.index.name = 'company_name'
     else:
         df = pd.read_sql('SELECT * FROM Interest', conn)
-        df.set_index('company_name', inplace=True)
-        df = 0
+        if df.empty:
+            # データがない場合は0で初期化
+            df = pd.DataFrame(0, index=[company_name], columns=interest_list + ['コメント'])
+            df.index.name = 'company_name'
+        else:
+            df.set_index('company_name', inplace=True)
 
     selected_interest = st.radio(
         f'{name}さんが最も興味を持ったことは何ですか？',

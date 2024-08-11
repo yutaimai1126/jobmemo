@@ -1,15 +1,16 @@
 import streamlit as st
 import pandas as pd
 from matplotlib import pyplot as plt
-from matplotlib import font_manager as fm
+import japanize_matplotlib
+# from matplotlib import font_manager as fm
 import re
 import unicodedata
 from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
 
 # フォントを追加
-prop = fm.FontProperties(fname='C:/WINDOWS/Fonts/BIZ-UDMinchoM.ttc')
-plt.rcParams['font.family'] = prop.get_name()
+# prop = fm.FontProperties(fname='C:/WINDOWS/Fonts/BIZ-UDMinchoM.ttc')
+# plt.rcParams['font.family'] = prop.get_name()
 
 # 良い点
 

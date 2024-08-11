@@ -44,7 +44,7 @@ if first_time == 'はい':
 else:
     df = pd.read_sql('SELECT * FROM sample', conn, index_col='company_name')
 
-st.text(f'{name}さんが最も興味を持ったことは何ですか？')
+
 selected_interest = st.radio(
     f'{name}さんが最も興味を持ったことは何ですか？',
     interest_list
@@ -55,7 +55,7 @@ df.loc[company_name, selected_interest] = 1  # Boolean代わりに1を使用
 st.write(df)
 
 if st.button('保存'):
-    df.to_sql('sample', conn, if_exists='replace', index=True)
+    df.to_sql('sample', conn, if_exists='append', index=True)
     conn.commit()
     st.success("データが保存されました。")
 

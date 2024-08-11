@@ -22,6 +22,7 @@ else:
 
     # WordCloudを表示
     plt.figure(figsize=(10, 5))
+    plt.title("WordCloud")
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis('off')
     

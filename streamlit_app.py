@@ -102,5 +102,4 @@ if submit_button:
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
 
-    st.write(df)
-
+        st.write(df)

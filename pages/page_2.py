@@ -34,5 +34,19 @@ ax.set_ylabel('Total Count')
 # グラフをStreamlitに表示
 st.pyplot(fig)
 
+# グラフを作成
+plt.figure(figsize=(10, 6))
+
+# 各企業の志望度を棒グラフで表示
+df.plot(kind='bar', x='company_name', y='志望度', legend=False, color='skyblue')
+
+# グラフのタイトルとラベルを設定
+plt.title('志望度の比較')
+plt.xlabel('Company Name')
+plt.ylabel('Aspiration Level')
+
+# グラフを表示
+st.pyplot(fig)
+
 # 接続を閉じる
 conn.close()

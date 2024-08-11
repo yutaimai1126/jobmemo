@@ -70,6 +70,8 @@ if submit_button:
     # データベースに保存
     try:
         df.to_sql('Interest', conn, if_exists='replace', index=True)
+        # テキスト形式で出力
+        df['コメント'].to_csv('comment.txt', index=False, sep='\t')
         st.success("データが保存されました。")
     except Exception as e:
         st.error(f"エラーが発生しました: {e}")

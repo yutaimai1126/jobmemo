@@ -61,7 +61,7 @@ st.write(df)
 
 if st.button('保存'):
     try:
-        df.to_sql('sample', conn, if_exists='replace', index=True)
+        df.to_sql('sample', conn, if_exists='append', index=True)
         conn.commit()
         st.success("データが保存されました。")
     except Exception as e:

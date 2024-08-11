@@ -1,6 +1,7 @@
 import streamlit as st
 import sqlite3
 import pandas as pd
+import os
 
 st.set_page_config(page_title="Job Memo", page_icon='icon.png')
 

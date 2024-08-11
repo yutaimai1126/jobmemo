@@ -16,6 +16,7 @@ def init_db():
             福利厚生 INTEGER,
             やりがい INTEGER,
             企業理念 INTEGER
+            コメント INTEGER
         )
         ''')
         conn.commit()
@@ -37,7 +38,7 @@ company_name = st.text_input('説明会を受けた会社名は何ですか？',
 # データベースに接続
 with sqlite3.connect('interest.db') as conn:
     cur = conn.cursor()
-    interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
+    interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念', 'コメント']
 
     if first_time == 'はい':
         df = pd.DataFrame(0, index=[company_name], columns=interest_list)
@@ -54,6 +55,9 @@ with sqlite3.connect('interest.db') as conn:
 
     if company_name:
         df.loc[company_name, selected_interest] = 1  # Boolean代わりに1を使用
+    
+    comment = st.text_area()
+    df.loc[company_name,'コメント'] = comment
 
     st.write(df)
 

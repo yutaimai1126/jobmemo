@@ -4,7 +4,7 @@ st.set_page_config(page_title="Job Memo", page_icon='icon.png')
 
 st.title("タクヤさんのマイページ")
 
-st.header('おかえりなさい')
+st.header('会社説明会お疲れさまでした')
 
 company_name = st.text_input('会社名', '')
 

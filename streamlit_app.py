@@ -23,13 +23,18 @@ interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業�
 
 if first_time == 'はい':
     # 新しいデータフレームを作成
-    df = pd.DataFrame(index=[company_name], columns=interest_list)
+    df = pd.DataFrame(None, index=[company_name], columns=interest_list)
 else:
     df = pd.read_sql('SELECT * FROM sample', conn, index_col='index')
 
 st.text(f'{name}さんが最も興味を持ったことは何ですか？')
-for interest in interest_list:
-    df.loc[company_name, interest] =  st.radio(interest)
+selected_interest = st.radio(
+    f'{name}さんが最も興味を持ったことは何ですか？',
+    interest_list
+)
+
+df.loc[company_name, selected_interest] = True
+
 
 # データフレームの表示
 st.write(df)

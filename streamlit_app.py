@@ -57,16 +57,15 @@ with sqlite3.connect('interest.db') as conn:
         df.loc[company_name, selected_interest] = 1  # Boolean代わりに1を使用
     
     comment = st.text_area('コメントを入力してください', value='', height=100)
-
     df.loc[company_name, 'コメント'] = comment
 
     st.write(df)
 
     if st.button('保存'):
         try:
-            # データベースに保存する前にデータの存在を確認
-            df.to_sql('sample', conn, if_exists='replace', index=True)  # 既存のデータを更新
-            conn.commit()
-            st.success("データが保存されました。")
+            with sqlite3.connect('interest.db') as conn:
+                df.to_sql('sample', conn, if_exists='replace', index=True)  # 既存のデータを更新
+                conn.commit()
+                st.success("データが保存されました。")
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")

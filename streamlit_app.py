@@ -8,7 +8,7 @@ st.header('会社説明会お疲れさまでした')
 
 company_name = st.text_input('会社名', '')
 
-st.subheader(f'{company_name}会社説明会')
+st.subheader(f'{company_name}')
 st.text('タクヤさんは何に興味を持ちましたか？')
 
 interest_list = ['国内シェア','海外進出度','将来性']

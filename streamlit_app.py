@@ -29,8 +29,7 @@ else:
 
 st.text(f'{name}さんが最も興味を持ったことは何ですか？')
 for interest in interest_list:
-    selected_interest = st.radio(interest, ['1', '2', '3', '4', '5'], index=2)
-    df.loc[company_name, interest] = selected_interest
+    df.loc[company_name, interest] =  st.radio(interest)
 
 # データフレームの表示
 st.write(df)

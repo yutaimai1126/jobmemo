@@ -1,6 +1,9 @@
 import streamlit as st
 
-st.set_page_config(page_title="メインページ", page_icon='icon.png')
-st.title("Multiple OSS Access Log Analyzer")
+st.set_page_config(page_title="Job Memo", page_icon='icon.png')
 
-st.radio("好きなマイケルは？", ('ジャクソン', 'ジョーダン', 'ホフマン'))
+st.title("タクヤさんのマイページ")
+
+st.header('会社説明会')
+
+st.subheader('株式会社マネッセ')

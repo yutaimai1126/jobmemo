@@ -86,5 +86,5 @@ if st.button('保存'):
 #     conn.commit()
 #     st.success("データが保存されました。")
 
-cur.close()
-conn.close()
+# cur.close()
+# conn.close()

@@ -3,6 +3,14 @@ import sqlite3
 import pandas as pd
 from wordcloud import WordCloud
 from matplotlib import pyplot as plt
+from matplotlib import font_manager as fm
+
+# フォントのパス
+font_path = 'C:/WINDOWS/Fonts/BIZ-UDMinchoM.ttc'
+
+# フォントを追加
+prop = fm.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = prop.get_name()
 
 # テキストファイルを読み込み
 with open("comment.txt", "r", encoding="utf-8") as f:

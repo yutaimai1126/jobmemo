@@ -103,5 +103,3 @@ if submit_button:
             st.success("データが保存されました。")
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
-
-        st.write(df)

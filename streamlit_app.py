@@ -88,6 +88,9 @@ if submit_button:
                 df.index.name = 'company_name'
             else:
                 df.set_index('company_name', inplace=True)
+                # 新しい会社名が存在しない場合、データフレームに追加
+                if company_name not in df.index:
+                    df.loc[company_name] = [0] * len(interest_list) + ['']
         
         # データの更新
         if company_name:

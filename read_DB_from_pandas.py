@@ -22,7 +22,7 @@ cur = conn.cursor()
 # テーブルが存在しない場合に作成
 cur.execute('''
 CREATE TABLE IF NOT EXISTS sample (
-    index TEXT PRIMARY KEY,
+    company_name TEXT PRIMARY KEY,
     働き方 INTEGER,
     給与 INTEGER,
     福利厚生 INTEGER,
@@ -37,7 +37,7 @@ if first_time == 'はい':
     # 新しいデータフレームを作成
     df = pd.DataFrame(0, index=[company_name], columns=interest_list)
 else:
-    df = pd.read_sql('SELECT * FROM sample', conn, index_col='index')
+    df = pd.read_sql('SELECT * FROM sample', conn, index_col='company_name')
 
 st.text(f'{name}さんが最も興味を持ったことは何ですか？')
 selected_interest = st.radio(
@@ -45,14 +45,14 @@ selected_interest = st.radio(
     interest_list
 )
 
-df.loc[company_name, selected_interest] = True
+df.loc[company_name, selected_interest] = 1  # Boolean代わりに1を使用
 
 # データフレームの表示
 st.write(df)
 
 # 保存ボタンを追加
 if st.button('保存'):
-    df.to_sql('sample', conn, if_exists='replace', index=True)  # テーブルを置き換えるか追加
+    df.to_sql('sample', conn, if_exists='replace', index=True)
     conn.commit()  # 変更をコミット
     st.success("データが保存されました。")
 

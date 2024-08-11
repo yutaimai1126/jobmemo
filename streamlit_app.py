@@ -49,8 +49,6 @@ def init_db():
 
 name = 'タクヤ'
 st.title(f"{name}さんのマイページ")
-dbname = 'interest.db'
-conn = sqlite3.connect(dbname)
 
 init_db()
 
@@ -61,7 +59,7 @@ with st.form(key='input_form'):
         key='first_time_radio'
     )
 
-    st.header(f'{name}さん、会社説明会お疲れさまでした')
+    st.header(f'会社説明会お疲れさまでした')
     company_name = st.text_input('説明会を受けた会社名は何ですか？', '', key='company_name_input')
 
     interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
@@ -108,6 +106,6 @@ if submit_button:
             st.success("データが保存されました。")
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
-
+        check_db_schema()
         # データベースをクローズする
         conn.close()

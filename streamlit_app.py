@@ -30,7 +30,7 @@ n_comment = st.text_area(f'{company_name}の悪い点を入力してください
 
 aspiration = st.slider('志望度', 0, 100, 50)
 
-submit_button = st.form_submit_button(label='保存')
+submit_button = st.button(label='保存')
 
 if submit_button:
     dbname = 'interest.db'

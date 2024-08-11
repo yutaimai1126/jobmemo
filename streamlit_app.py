@@ -33,7 +33,7 @@ st.header(f'{name}さん、会社説明会お疲れさまでした')
 company_name = st.text_input('説明会を受けた会社名は何ですか？', '')
 
 # データベースに接続
-conn = sqlite3.connect('interest.db')
+conn = sqlite3.connect('nterest.db')
 cur = conn.cursor()
 init_db()
 

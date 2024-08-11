@@ -87,7 +87,7 @@ with sqlite3.connect('interest.db') as conn:
 
     st.write(df)
 
-
+    # データベースの状態確認
     st.title("データベース状態確認")
     check_db_schema()
 

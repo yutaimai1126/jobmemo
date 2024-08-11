@@ -1,10 +1,18 @@
 import streamlit as st
 import pandas as pd
 from matplotlib import pyplot as plt
+from matplotlib import font_manager as fm
 import re
 import unicodedata
 from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
+
+# フォントのパス
+font_path = 'ipag.ttf'
+
+# フォントを追加
+prop = fm.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = prop.get_name()
 
 # 良い点
 

@@ -17,7 +17,7 @@ if first_time == 'はい':
 
     company_name = st.text_input('会社名', '')
 
-    st.text()
+    # st.text()
 
     ziku = st.radio(
         f'{name}さんは就活の軸が決まっていますか？',

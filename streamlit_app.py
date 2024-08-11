@@ -84,17 +84,20 @@ with sqlite3.connect('interest.db') as conn:
         key='interest_radio'
     )
 
-    if company_name:
-        df.loc[company_name, selected_interest] = 1
+    if st.button('決定'):
+        if company_name:
+            df.loc[company_name, selected_interest] = 1
     
     comment = st.text_area('コメントを入力してください', value='', height=100)
-    df.loc[company_name, 'コメント'] = comment
+
+    if st.button('決定'):
+        df.loc[company_name, 'コメント'] = comment
 
     st.write(df)
 
-    # データベースの状態確認
-    st.title("データベース状態確認")
-    check_db_schema()
+    # # データベースの状態確認
+    # st.title("データベース状態確認")
+    # check_db_schema()
 
     if st.button('保存'):
         try:

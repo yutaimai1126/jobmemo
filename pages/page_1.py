@@ -8,6 +8,9 @@ import unicodedata
 from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
 
+name = 'タクヤ'
+st.title(f'{name}さんの軸ワードクラウド')
+
 # 良い点
 
 # テキストファイルを読み込み、不要な文字や記号を削除

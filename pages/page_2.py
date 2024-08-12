@@ -28,8 +28,8 @@ sum_interests.plot(kind='bar', ax=ax)
 
 # グラフのタイトルとラベルを設定
 ax.set_title('各項目の合計')
-ax.set_xlabel('Interest')
-ax.set_ylabel('Total Count')
+ax.set_xlabel('興味')
+ax.set_ylabel('興味を持った回数')
 
 # グラフをStreamlitに表示
 st.pyplot(fig)
@@ -42,8 +42,8 @@ df.plot(kind='bar', x='company_name', y='志望度', legend=False)
 
 # グラフのタイトルとラベルを設定
 plt.title('志望度の比較')
-plt.xlabel('Company Name')
-plt.ylabel('Aspiration Level')
+plt.xlabel('会社名')
+plt.ylabel('志望度（%）')
 
 # グラフを表示
 st.pyplot(plt)

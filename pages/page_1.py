@@ -59,8 +59,8 @@ word_cloud = WordCloud(font_path=font, width=1500, height=900,
                       max_words=400).generate(words_wakachi)
 
 # 新しいfigureとaxesを作成
-fig, ax = plt.subplots(figsize=(15, 10))
-ax.set_title('ポジティブ軸')
+fig, ax = plt.subplots(figsize=(9, 6))
+ax.set_title('ポジティブ軸',fontsize=18)
 ax.imshow(word_cloud, interpolation='bilinear')
 ax.tick_params(labelbottom=False, labelleft=False)
 ax.set_xticks([])

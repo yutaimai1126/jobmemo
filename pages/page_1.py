@@ -108,7 +108,7 @@ print(words_wakachi)
 
 # WordCloudの生成と表示
 font = 'ipag.ttf'
-stopWords = ['ので', 'そう', 'から', 'ため', '自分', '投資', '運用']
+stopWords = ['ので', 'そう', 'から', 'ため', '活', '的', '内', '感', '度', 'タイム', '魅力','非常','さ','者','期']
 
 # WordCloudを作成
 word_cloud = WordCloud(font_path=font, width=1500, height=900,

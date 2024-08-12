@@ -14,7 +14,7 @@ conn = sqlite3.connect(dbname)
 query = 'SELECT * FROM Interest'
 df = pd.read_sql(query, conn)
 
-st.write(df)
+# st.write(df)
 
 # 各項目について合計を計算する
 interest_list = ['働き方', '給与', '福利厚生', 'やりがい', '企業理念']
@@ -24,7 +24,7 @@ sum_interests = df[interest_list].sum()
 fig, ax = plt.subplots(figsize=(10, 6))
 
 # 各項目の合計を棒グラフで表示
-sum_interests.plot(kind='bar', color='black', ax=ax)
+sum_interests.plot(kind='bar', ax=ax)
 
 # グラフのタイトルとラベルを設定
 ax.set_title('各項目の合計')
@@ -38,7 +38,7 @@ st.pyplot(fig)
 plt.figure(figsize=(10, 6))
 
 # 各企業の志望度を棒グラフで表示
-df.plot(kind='bar', x='company_name', y='志望度', legend=False, color='skyblue')
+df.plot(kind='bar', x='company_name', y='志望度', legend=False)
 
 # グラフのタイトルとラベルを設定
 plt.title('志望度の比較')

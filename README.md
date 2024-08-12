@@ -1,6 +1,9 @@
-# jobmemo
+# JobMemo
 
-https://jobmemo-2yetmuyqxsh9g8nambwx9p.streamlit.app/
+- デプロイ済み
+
+https://jobmemo-gzg5vsdf8qtd53kcnc8d3g.streamlit.app/
+
 
 
 ## エンドユーザー

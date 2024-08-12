@@ -8,6 +8,8 @@ import unicodedata
 from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
 
+plt.rcParams["font.size"] = 18
+
 name = 'タクヤ'
 st.title(f'{name}さんの軸ワードクラウド')
 
@@ -59,7 +61,7 @@ word_cloud = WordCloud(font_path=font, width=1500, height=900,
 
 # 新しいfigureとaxesを作成
 fig, ax = plt.subplots(figsize=(9, 6))
-ax.set_title('ポジティブ軸',fontsize=18)
+ax.set_title('ポジティブ軸')
 ax.imshow(word_cloud, interpolation='bilinear')
 ax.tick_params(labelbottom=False, labelleft=False)
 ax.set_xticks([])
@@ -117,7 +119,7 @@ word_cloud = WordCloud(font_path=font, width=1500, height=900,
 
 # 新しいfigureとaxesを作成
 fig, ax = plt.subplots(figsize=(9, 6))
-ax.set_title('ネガティブ軸',fontsize=18)
+ax.set_title('ネガティブ軸')
 ax.imshow(word_cloud, interpolation='bilinear')
 ax.tick_params(labelbottom=False, labelleft=False)
 ax.set_xticks([])

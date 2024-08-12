@@ -3,6 +3,7 @@ import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
 
+plt.rcParams["font.size"] = 18
 # Streamlitアプリケーションのタイトル
 name = 'タクヤ'
 st.title(f'{name}さんの興味の傾向')

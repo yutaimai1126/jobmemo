@@ -4,7 +4,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Streamlitアプリケーションのタイトル
-st.title('各項目の合計')
+name = 'タクヤ'
+st.title(f'{name}さんの興味の傾向')
 
 # データベース接続
 dbname = 'interest.db'

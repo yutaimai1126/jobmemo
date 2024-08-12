@@ -11,7 +11,7 @@ from wordcloud import WordCloud
 # 良い点
 
 # テキストファイルを読み込み、不要な文字や記号を削除
-with open('p_comment.txt', encoding='utf-8') as f:
+with open('text/p_comment.txt', encoding='utf-8') as f:
     text = f.read().replace('\n', '').replace(' ', '')
 
 text = re.sub('\u3000', '', text)
@@ -69,7 +69,7 @@ st.pyplot(fig)
 # 悪い点
 
 # テキストファイルを読み込み、不要な文字や記号を削除
-with open('n_comment.txt', encoding='utf-8') as f:
+with open('text/n_comment.txt', encoding='utf-8') as f:
     text = f.read().replace('\n', '').replace(' ', '')
 
 text = re.sub('\u3000', '', text)

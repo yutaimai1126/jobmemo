@@ -79,8 +79,8 @@ if submit_button:
         df.to_sql('Interest', conn, if_exists='replace', index=True)
         
         # テキスト形式で出力
-        df['良い点'].to_csv('p_comment.txt', index=False, header=False, sep='\t', quoting=csv.QUOTE_MINIMAL)
-        df['悪い点'].to_csv('n_comment.txt', index=False, header=False, sep='\t', quoting=csv.QUOTE_MINIMAL)
+        df['良い点'].to_csv('text/p_comment.txt', index=False, header=False, sep='\t', quoting=csv.QUOTE_MINIMAL)
+        df['悪い点'].to_csv('text/n_comment.txt', index=False, header=False, sep='\t', quoting=csv.QUOTE_MINIMAL)
         
         st.success("データが保存されました。")
     except Exception as e:

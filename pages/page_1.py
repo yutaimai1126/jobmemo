@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from matplotlib import pyplot as plt
 import japanize_matplotlib
-# from matplotlib import font_manager as fm
 import re
 import unicodedata
 from janome.tokenizer import Tokenizer
@@ -89,7 +88,7 @@ text = re.sub('\\n', ' ', text)
 
 # Unicode正規化
 text_sample = unicodedata.normalize('NFKC', text)
-print('UNICODEの正規化後：{}'.format(text_sample))
+print('UNICODEの正規化後:{}'.format(text_sample))
 
 # janomeを使った形態素解析
 t = Tokenizer()

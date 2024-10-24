@@ -1,13 +1,15 @@
 import streamlit as st
 import pandas as pd
 from matplotlib import pyplot as plt
-import japanize_matplotlib
+from matplotlib import font_manager
 import re
 import unicodedata
 from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
 
 plt.rcParams["font.size"] = 18
+font_path = 'ipaexm.ttf'  # フォントのパスを指定
+font_prop = font_manager.FontProperties(fname=font_path)
 
 name = 'タクヤ'
 st.title(f'{name}さんの軸ワードクラウド')

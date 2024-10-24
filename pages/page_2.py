@@ -2,8 +2,12 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 
 plt.rcParams["font.size"] = 18
+font_path = 'ipaexm.ttf'  # フォントのパスを指定
+font_prop = font_manager.FontProperties(fname=font_path)
+
 # Streamlitアプリケーションのタイトル
 name = 'タクヤ'
 st.title(f'{name}さんの興味の傾向')

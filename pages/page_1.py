@@ -8,8 +8,14 @@ from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
 
 plt.rcParams["font.size"] = 18
-font_path = 'ipaexm.ttf'  # フォントのパスを指定
+
+# フォントのパスを指定
+font_path = 'ipaexm.ttf'  # ここにフォントファイルのパスを入力
 font_prop = font_manager.FontProperties(fname=font_path)
+
+# matplotlibのフォント設定
+plt.rcParams['font.family'] = font_prop.get_name()  # フォントのファミリーを指定
+plt.rcParams['font.sans-serif'] = ['IPAexMincho']  # サンセリフフォントの設定
 
 name = 'タクヤ'
 st.title(f'{name}さんの軸ワードクラウド')

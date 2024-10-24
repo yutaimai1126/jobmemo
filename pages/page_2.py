@@ -2,16 +2,9 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib import font_manager
+import japanize_matplotlib
 
 plt.rcParams["font.size"] = 18
-# フォントのパスを指定
-font_path = 'ipaexm.ttf'  # ここにフォントファイルのパスを入力
-font_prop = font_manager.FontProperties(fname=font_path)
-
-# matplotlibのフォント設定
-plt.rcParams['font.family'] = font_prop.get_name()  # フォントのファミリーを指定
-plt.rcParams['font.sans-serif'] = ['IPAexMincho']  # サンセリフフォントの設定
 
 # Streamlitアプリケーションのタイトル
 name = 'タクヤ'

@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from matplotlib import pyplot as plt
-# import japanize_matplotlib
+from matplotlib import font_manager
 import re
 import unicodedata
 from janome.tokenizer import Tokenizer
@@ -9,7 +9,9 @@ from wordcloud import WordCloud
 
 
 plt.rcParams["font.size"] = 18
-plt.rcParams['font.family'] = 'Noto Serif CJK JP' 
+font_manager.fontManager.addfont("font/fonts-japanese-gothic.ttf")
+plt.rc('font', family="IPAexGothic")
+
 name = 'タクヤ'
 st.title(f'{name}さんの軸ワードクラウド')
 
@@ -50,7 +52,7 @@ words_wakachi = " ".join(words_list)
 print(words_wakachi)
 
 # WordCloudの生成と表示
-font = 'ipam.ttf'
+font = 'font/fonts-japanese-mincho.ttf'
 stopWords = ['ので', 'そう', 'から', 'ため', '活', '的', '内', '感', '度', 'タイム', '魅力','非常','制','方']
 
 # WordCloudを作成
@@ -108,7 +110,7 @@ words_wakachi = " ".join(words_list)
 print(words_wakachi)
 
 # WordCloudの生成と表示
-font = 'ipam.ttf'
+font = 'font/fonts-japanese-mincho.ttf'
 stopWords = ['ので', 'そう', 'から', 'ため', '活', '的', '内', '感', '度', 'タイム', '魅力','非常','制','方','さ','者','期','強調','可能','性','課題','懸念']
 
 # WordCloudを作成

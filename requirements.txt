@@ -1,0 +1,6 @@
+streamlit
+matplotlib
+japanize-matplotlib
+janome
+wordcloud
+pandas

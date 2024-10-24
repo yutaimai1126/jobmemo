@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import sqlite3
 import pandas as pd
@@ -5,7 +6,9 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
 plt.rcParams["font.size"] = 18
-font_manager.fontManager.addfont("font/fonts-japanese-gothic.ttf")
+
+font_path = os.path.abspath("font/fonts-japanese-gothic.ttf")
+font_manager.fontManager.addfont(font_path)
 plt.rc('font', family="IPAexGothic")
 
 # Streamlitアプリケーションのタイトル

@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 from matplotlib import pyplot as plt
@@ -9,7 +10,8 @@ from wordcloud import WordCloud
 
 
 plt.rcParams["font.size"] = 18
-font_manager.fontManager.addfont("font/fonts-japanese-gothic.ttf")
+font_path = os.path.abspath("font/fonts-japanese-gothic.ttf")
+font_manager.fontManager.addfont(font_path)
 plt.rc('font', family="IPAexGothic")
 
 name = 'タクヤ'

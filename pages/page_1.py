@@ -10,12 +10,12 @@ from wordcloud import WordCloud
 plt.rcParams["font.size"] = 18
 
 # フォントのパスを指定
-font_path = 'ipaexm.ttf'  # ここにフォントファイルのパスを入力
+font_path = 'ipam.ttf'  # ここにフォントファイルのパスを入力
 font_prop = font_manager.FontProperties(fname=font_path)
 
 # matplotlibのフォント設定
 plt.rcParams['font.family'] = font_prop.get_name()  # フォントのファミリーを指定
-plt.rcParams['font.sans-serif'] = ['IPAexMincho']  # サンセリフフォントの設定
+plt.rcParams['font.sans-serif'] = ['IPAMincho']  # サンセリフフォントの設定
 
 name = 'タクヤ'
 st.title(f'{name}さんの軸ワードクラウド')
@@ -57,7 +57,7 @@ words_wakachi = " ".join(words_list)
 print(words_wakachi)
 
 # WordCloudの生成と表示
-font = 'ipaexm.ttf'
+font = 'ArialTh.ttf'
 stopWords = ['ので', 'そう', 'から', 'ため', '活', '的', '内', '感', '度', 'タイム', '魅力','非常','制','方']
 
 # WordCloudを作成
@@ -115,7 +115,7 @@ words_wakachi = " ".join(words_list)
 print(words_wakachi)
 
 # WordCloudの生成と表示
-font = 'ipaexm.ttf'
+font = 'ArialTh.ttf'
 stopWords = ['ので', 'そう', 'から', 'ため', '活', '的', '内', '感', '度', 'タイム', '魅力','非常','制','方','さ','者','期','強調','可能','性','課題','懸念']
 
 # WordCloudを作成

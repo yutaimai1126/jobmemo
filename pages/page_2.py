@@ -2,9 +2,10 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
-import japanize_matplotlib
+# import japanize_matplotlib
 
 plt.rcParams["font.size"] = 18
+plt.rcParams['font.family'] = 'Noto Serif CJK JP' 
 
 # Streamlitアプリケーションのタイトル
 name = 'タクヤ'

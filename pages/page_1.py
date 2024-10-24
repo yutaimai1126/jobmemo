@@ -1,14 +1,15 @@
 import streamlit as st
 import pandas as pd
 from matplotlib import pyplot as plt
-import japanize_matplotlib
+# import japanize_matplotlib
 import re
 import unicodedata
 from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
 
-plt.rcParams["font.size"] = 18
 
+plt.rcParams["font.size"] = 18
+plt.rcParams['font.family'] = 'Noto Serif CJK JP' 
 name = 'タクヤ'
 st.title(f'{name}さんの軸ワードクラウド')
 

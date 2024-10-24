@@ -30,7 +30,7 @@ text = re.sub('\\n', ' ', text)
 
 # Unicode正規化
 text_sample = unicodedata.normalize('NFKC', text)
-print('UNICODEの正規化後：{}'.format(text_sample))
+print('UNICODEの正規化後:{}'.format(text_sample))
 
 # janomeを使った形態素解析
 t = Tokenizer()
@@ -49,7 +49,7 @@ words_wakachi = " ".join(words_list)
 print(words_wakachi)
 
 # WordCloudの生成と表示
-font = 'ipag.ttf'
+font = 'ipaexm.ttf'
 stopWords = ['ので', 'そう', 'から', 'ため', '活', '的', '内', '感', '度', 'タイム', '魅力','非常','制','方']
 
 # WordCloudを作成
@@ -107,7 +107,7 @@ words_wakachi = " ".join(words_list)
 print(words_wakachi)
 
 # WordCloudの生成と表示
-font = 'ipag.ttf'
+font = 'ipaexm.ttf'
 stopWords = ['ので', 'そう', 'から', 'ため', '活', '的', '内', '感', '度', 'タイム', '魅力','非常','制','方','さ','者','期','強調','可能','性','課題','懸念']
 
 # WordCloudを作成

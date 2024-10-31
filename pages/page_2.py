@@ -7,7 +7,7 @@ from matplotlib import font_manager
 
 plt.rcParams["font.size"] = 18
 
-font_path = os.path.abspath("font/fonts-japanese-gothic.ttf")
+font_path = os.path.abspath("font/ipaexg.ttf")
 font_manager.fontManager.addfont(font_path)
 plt.rc('font', family="IPAexGothic")
 

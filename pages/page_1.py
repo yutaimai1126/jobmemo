@@ -54,7 +54,7 @@ words_wakachi = " ".join(words_list)
 print(words_wakachi)
 
 # WordCloudの生成と表示
-font = 'font/fonts-japanese-mincho.ttf'
+font = 'font/ipaexg.ttf'
 stopWords = ['ので', 'そう', 'から', 'ため', '活', '的', '内', '感', '度', 'タイム', '魅力','非常','制','方']
 
 # WordCloudを作成
